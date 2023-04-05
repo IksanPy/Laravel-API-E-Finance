@@ -12,9 +12,20 @@ class Transaction extends Model
 
     protected $guarded = ['id'];
 
+    protected $with = ['account'];
+
     protected static function booted()
     {
         static::addGlobalScope(new UserLoginScope);
+    }
+
+    public function scopeAccountType($query, $type)
+    {
+        $query->when($type, function ($query, $type) {
+            return $query->whereHas('account', function ($query) use ($type) {
+                $query->where('type', $type);
+            });
+        });
     }
 
     public function account()

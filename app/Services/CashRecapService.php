@@ -17,10 +17,12 @@ class CashRecapService
     public function show($yearMonth)
     {
         // attr
-        $explode = explode('-', $yearMonth);
+        $yearMonth = explode('-', $yearMonth);
+        $year = $yearMonth[0];
+        $month = $yearMonth[1];
 
-        $cashRecap = CashRecap::whereYear('year_month', $explode[0])
-            ->whereMonth('year_month', $explode[1])
+        $cashRecap = CashRecap::whereYear('year_month', $year)
+            ->whereMonth('year_month', $month)
             ->first();
 
         return $cashRecap;

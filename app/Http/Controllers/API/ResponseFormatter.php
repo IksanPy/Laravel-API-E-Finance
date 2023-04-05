@@ -13,11 +13,14 @@ class ResponseFormatter
         'data' => null
     ];
 
-    public static function success($message = null, $data = null, $code = 200)
+    public static function success($message = null, $data = null, $code = 200, $filter = false)
     {
         self::$response['meta']['code'] = $code;
         self::$response['meta']['message'] = $message;
         self::$response['data'] = $data;
+        if ($filter) {
+            self::$response['filter'] = $filter;
+        }
 
         return response()->json(self::$response, self::$response['meta']['code']);
     }
