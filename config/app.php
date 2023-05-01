@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // api documentation
+        \L5Swagger\L5SwaggerServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // api documentation
+        'L5Swagger' => \Darkaonline\L5Swagger\Facades\L5Swagger::class,
     ],
 
 ];

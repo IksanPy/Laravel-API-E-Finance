@@ -9,6 +9,35 @@ use App\Services\AuthService;
 
 class AuthController extends Controller
 {
+    /**
+     * 
+     * @OA\POST(
+     *      path="/api/register",
+     *      summary="Register",
+     *      description="membuat pengguna baru beserta tokennya",
+     *      tags={"Auth"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="User registration data",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(
+     *                      @OA\Property(property="name", type="string", example="John Doe"),
+     *                      @OA\Property(property="email", type="string", example="john.doe@example.com"),
+     *                      @OA\Property(property="password", type="string", example="john123")
+     *              ),
+     *          ),
+     *     ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="OK AJA"
+     *     ),@OA\Response(
+     *          response=422,
+     *          description="OK AJA"
+     *     )
+     * )
+     * 
+     */
     public function register(RegisterAuthRequest $request, AuthService $AuthService)
     {
         $register = $AuthService->register($request->all());
